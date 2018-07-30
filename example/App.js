@@ -39,8 +39,7 @@ export default class example extends Component {
   }
 
   renderMainContent() {
-    const { dataSource } = this.state;
-
+    const { dataSource } = this.state;    
     return (
         <View style={styles.container}>
         {this.renderTopControlPanel()}
