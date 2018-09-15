@@ -112,6 +112,10 @@ Method name           | Params                          | Description
 
 # DataSource
 
+It feeds off a data structure and calls the right listeners for the various operations.
+
+# DataStore
+
 It wraps your array, giving you some useful methods to update the data.
 
 ## Methods
