@@ -15,7 +15,8 @@ import {
   Button,
   TouchableHighlight,
   ToastAndroid,
-  SafeAreaView
+  SafeAreaView,
+  TextInput,
 } from 'react-native';
 
 import RecyclerViewList, { DataSource } from 'react-native-recyclerview-list';
@@ -209,6 +210,7 @@ class Item extends Component {
       <TouchableHighlight
         onPress={onIncrementCounter}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 5 }}>
+          <TextInput/>
           <Image
             source={{ uri: 'http://loremflickr.com/320/240?t=' + (id % 9) }}
             style={{
