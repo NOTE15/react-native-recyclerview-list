@@ -209,8 +209,9 @@ class Item extends Component {
     return (
       <TouchableHighlight
         onPress={onIncrementCounter}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 5 }}>
-          <TextInput/>
+        {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 5 }}> */}
+        <View>
+          <TextInput value="hello"/>
           <Image
             source={{ uri: 'http://loremflickr.com/320/240?t=' + (id % 9) }}
             style={{
