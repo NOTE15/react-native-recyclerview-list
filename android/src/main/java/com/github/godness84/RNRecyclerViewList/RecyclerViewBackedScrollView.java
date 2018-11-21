@@ -2,17 +2,18 @@ package com.github.godness84.RNRecyclerViewList;
 
 import android.content.Context;
 import android.graphics.PointF;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.common.SystemClock;
@@ -158,6 +159,7 @@ public class RecyclerViewBackedScrollView extends RecyclerView {
         private final RecyclerViewBackedScrollView mScrollView;
         private int mItemCount = 0;
 
+
         public ReactListAdapter(RecyclerViewBackedScrollView scrollView) {
             mScrollView = scrollView;
             //setHasStableIds(true);
@@ -203,6 +205,42 @@ public class RecyclerViewBackedScrollView extends RecyclerView {
         public void onViewRecycled(ConcreteViewHolder holder) {
             super.onViewRecycled(holder);
             ((RecyclableWrapperViewGroup) holder.itemView).removeAllViews();
+        }
+
+        @Override
+        public void onViewAttachedToWindow(@NonNull ConcreteViewHolder holder) {
+            ArrayList<View> allEditTextsInViewGroup = getAllEditTextChildren(holder.itemView);
+            for (View child : allEditTextsInViewGroup) {
+                EditText editText = (EditText) child;
+                // by default, an EditText that is focusable should also be selectable, so
+                // we should be safe to make sure text is selectable by resetting it.
+                if (editText.isFocusable()) {
+                    editText.setTextIsSelectable(true);
+                }
+            }
+
+            super.onViewAttachedToWindow(holder);
+        }
+
+        private ArrayList<View> getAllEditTextChildren(View v) {
+            if (!(v instanceof ViewGroup)) {
+                ArrayList<View> viewArrayList = new ArrayList<View>();
+                if (v instanceof EditText) {
+                    viewArrayList.add(v);
+                }
+                return viewArrayList;
+            }
+
+            ArrayList<View> result = new ArrayList<View>();
+
+            ViewGroup vg = (ViewGroup) v;
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                View child = vg.getChildAt(i);
+                ArrayList<View> childChildren = new ArrayList<View>();
+                childChildren.addAll(getAllEditTextChildren(child));
+                result.addAll(childChildren);
+            }
+            return result;
         }
 
         @Override
