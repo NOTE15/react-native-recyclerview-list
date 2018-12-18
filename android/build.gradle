@@ -43,6 +43,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
+    if (project == rootProject) {
+        def rnVersion = readReactNativeVersion('../package.json', 'peerDependencies')
+        implementation "com.facebook.react:react-native:${rnVersion}"
+    } else {
+        implementation 'com.facebook.react:react-native:+'
+    }
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 }
