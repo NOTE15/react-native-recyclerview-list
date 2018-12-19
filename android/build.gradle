@@ -35,18 +35,19 @@ repositories {
     jcenter()
 
     if (project == rootProject) {
-        // if we are the root project, use a remote RN maven repo so jitpack can build this lib without local RN setup
-        def rnVersion = readReactNativeVersion('../package.json', 'peerDependencies')
-        def unpkgUrl = "https://unpkg.com/react-native@${rnVersion}/android"
-        println "Will use the unpkg.com exposed RN maven repo at ${unpkgUrl}"
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url unpkgUrl
-        }
-    }
+         // if we are the root project, use a remote RN maven repo so jitpack can build this lib without local RN setup
+         def reactNativeRepo = 'https://dl.bintray.com/wordpress-mobile/react-native-mirror/'
+         println "Will use the RN maven repo at ${reactNativeRepo}"
+         maven { url reactNativeRepo }
+     }
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
+    if (project == rootProject) {
+        def rnVersion = readReactNativeVersion('../package.json', 'peerDependencies')
+        implementation "com.facebook.react:react-native:${rnVersion}"
+    } else {
+        implementation 'com.facebook.react:react-native:+'
+    }
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 }
