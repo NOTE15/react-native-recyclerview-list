@@ -17,7 +17,6 @@ apply from: 'https://gist.githubusercontent.com/hypest/742448b9588b3a0aa580a5e80
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 16
