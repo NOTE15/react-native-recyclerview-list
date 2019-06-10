@@ -3,10 +3,11 @@ package com.github.godness84.RNRecyclerViewList;
 import android.content.Context;
 import android.graphics.PointF;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.DefaultItemAnimator;
-import androidx.appcompat.widget.LinearLayoutManager;
-import androidx.appcompat.widget.LinearSmoothScroller;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;

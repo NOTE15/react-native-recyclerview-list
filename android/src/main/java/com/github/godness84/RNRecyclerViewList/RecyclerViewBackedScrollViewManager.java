@@ -4,10 +4,6 @@ import javax.annotation.Nullable;
 
 import java.util.Map;
 
-import androidx.appcompat.widget.LinearLayoutManager;
-import androidx.appcompat.widget.LinearSmoothScroller;
-import androidx.appcompat.widget.RecyclerView;
-
 import android.view.View;
 
 import com.facebook.infer.annotation.Assertions;
