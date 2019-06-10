@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.4.1'
     }
 }
 
@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -48,5 +48,5 @@ dependencies {
     } else {
         implementation 'com.facebook.react:react-native:+'
     }
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

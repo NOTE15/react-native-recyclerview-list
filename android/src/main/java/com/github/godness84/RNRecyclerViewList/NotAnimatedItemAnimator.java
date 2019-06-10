@@ -1,7 +1,7 @@
 package com.github.godness84.RNRecyclerViewList;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
+import androidx.appcompat.widget.RecyclerView;
+import androidx.appcompat.widget.SimpleItemAnimator;
 
 /**
  * Implementation of {@link SimpleItemAnimator} that disables all default animations.
